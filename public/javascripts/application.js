@@ -19,7 +19,7 @@ function handleMessage(message) {
 
   $('#events').append(chat_message);
 
-  console.log(message, latency(message.timestamp))
+  console.log(message, message.color, latency(message.timestamp))
 
 }
 

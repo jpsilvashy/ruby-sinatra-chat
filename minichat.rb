@@ -12,7 +12,16 @@ channels = {}
 chatters = []
 
 get '/' do
-  erb :index, locals: { channels: channels }
+
+  # generate a lol name
+  random_name = [
+    Forgery::Name.female_first_name,
+    Forgery::Basic.color,
+    Forgery::Address.street_name.split(" ").first
+  ].join("-").downcase
+
+  # redirect to a random fun name!
+  redirect random_name
 end
 
 get '/:channel' do
@@ -37,34 +46,15 @@ post '/' do
   puts "=> post / [#{channel}]"
   puts "=> params #{params}"
 
-  ip = IP.new(request.ip)
-
-  # create color for user based off IP address
-  params[:color] = ip.to_hex[0..-3]
-
-  nickname = [Forgery::Basic.color, Forgery::Address.street_name.split(" ").first, rand(100)].join("-").downcase
-
-  # if chatter
-    # puts "this guy has been here!"
-  # else
-    chatter = {
-      channel: channel,
-      ip: ip,
-      color: params[:color],
-      nickname: nickname
-    }
-
-    chatters << chatter
-
-  # end
-
-  # puts chatter
-
-  # puts "=> chatters:"
-  # puts chatters
+  message = {
+    channel: channel,
+    ip: IP.new(request.ip),
+    color: Forgery::Basic.hex_color,
+    content: params[:content]
+  }
 
   # do some processing
-  channels[channel] << "data: #{params.to_json}\n\n"
+  channels[channel] << "data: #{message.to_json}\n\n"
 
   204 # response without entity body
 end
