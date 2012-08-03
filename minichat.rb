@@ -41,7 +41,7 @@ get '/stream/:channel', provides: 'text/event-stream' do
 
     # insert stream into channels
     channels << { channel: channel, out: out }
-    Channel.first_or_create({ slug: channel })
+    # Channel.first_or_create({ slug: channel })
 
     # delete channel
     out.callback do
@@ -63,11 +63,11 @@ post '/' do
   active = channels.detect {|f| f[:channel] == channel }
 
   # get from db too
-  chan = Channel.get(channel)
+  # chan = Channel.get(channel)
 
-  puts "=> dm channel"
-  puts chan.messages.create({ content: params[:content] })
-  puts "=> messages on chan: #{chan.messages.count}"
+  # puts "=> dm channel"
+  # puts chan.messages.create({ content: params[:content] })
+  # puts "=> messages on chan: #{chan.messages.count}"
 
   # Not working.
   # chan.messages.each do |msg|

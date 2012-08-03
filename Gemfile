@@ -9,8 +9,8 @@ gem 'ruby-ip'
 gem 'forgery'
 
 gem 'data_mapper'
-gem 'dm-sqlite-adapter'
 
 group :development, :test do
+gem 'dm-sqlite-adapter'
   gem 'sqlite3'
 end
