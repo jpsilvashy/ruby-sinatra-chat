@@ -8,7 +8,7 @@ require 'forgery'
 
 set :server, 'thin'
 
-channels = {}
+channels = []
 chatters = []
 
 get '/' do
@@ -18,7 +18,7 @@ get '/' do
     Forgery::Name.female_first_name,
     Forgery::Basic.color,
     Forgery::Address.street_name.split(" ").first
-  ].join("-").downcase
+    ].join("-").downcase
 
   # redirect to a random fun name!
   redirect random_name
@@ -36,8 +36,14 @@ get '/stream/:channel', provides: 'text/event-stream' do
   puts "=> get /stream/:channel [#{channel}]"
 
   stream :keep_open do |out|
-    channels[channel] = out
-    out.callback { channels[channel].delete(out) }
+
+    # insert stream into channels
+    channels << { channel: channel, out: out }
+
+    # delete channel
+    out.callback {
+      channels.delete_if {|hash| hash[channel] == channel}
+    }
   end
 end
 
@@ -46,6 +52,7 @@ post '/' do
   puts "=> post / [#{channel}]"
   puts "=> params #{params}"
 
+  # form message
   message = {
     channel: channel,
     ip: IP.new(request.ip),
@@ -53,8 +60,13 @@ post '/' do
     content: params[:content]
   }
 
-  # do some processing
-  channels[channel] << "data: #{message.to_json}\n\n"
+  # get channels that match the channel name
+  channels.select {|f| f[:channel] == channel }
+
+  # write to all channels
+  channels.each do |channel|
+    channel[:out] << "data: #{message.to_json}\n\n"
+  end
 
   204 # response without entity body
 end
