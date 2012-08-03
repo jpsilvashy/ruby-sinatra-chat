@@ -6,7 +6,7 @@ require 'json'
 require 'ip'
 require 'forgery'
 
-require_relative 'dm'
+# require_relative 'dm'
 
 set :server, 'thin'
 
