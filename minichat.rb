@@ -6,6 +6,8 @@ require 'json'
 require 'ip'
 require 'forgery'
 
+require_relative 'dm'
+
 set :server, 'thin'
 
 channels = []
@@ -25,8 +27,8 @@ get '/' do
 end
 
 get '/:channel' do
-  channel = params[:channel]
-  puts "=> get / [#{channel}]"
+  params[:channel]
+  puts "=> get / [#{params[:channel]}]"
 
   erb :channel
 end
@@ -39,12 +41,16 @@ get '/stream/:channel', provides: 'text/event-stream' do
 
     # insert stream into channels
     channels << { channel: channel, out: out }
+    Channel.first_or_create({ slug: channel })
 
     # delete channel
     out.callback do
-      puts "=> closing channels:"
       puts channels.delete_if {|hash| hash[channel] == channel}
     end
+
+    puts "=> channels:"
+    puts channels
+    puts
   end
 end
 
@@ -52,6 +58,21 @@ post '/' do
   channel = params[:channel]
   puts "=> post / [#{channel}]"
   puts "=> params #{params}"
+
+  # get proper channel
+  active = channels.detect {|f| f[:channel] == channel }
+
+  # get from db too
+  chan = Channel.get(channel)
+
+  puts "=> dm channel"
+  puts chan.messages.create({ content: params[:content] })
+  puts "=> messages on chan: #{chan.messages.count}"
+
+  # Not working.
+  # chan.messages.each do |msg|
+  #   active[:out] << "data: #{{content: msg.content}.to_json}\n\n"
+  # end
 
   # form message
   message = {
@@ -61,6 +82,8 @@ post '/' do
     content: params[:content]
   }
 
+  active[:out] << "data: #{message.to_json}\n\n"
+
   # Get channels that match the channel name.
   # FIXME:
   # This implementation does not currently work
@@ -68,12 +91,6 @@ post '/' do
   # a new request is made to a different channel.
   # This probably needs a real persistance layer,
   # not 100% sure though.
-  channels = channels.select {|f| f[:channel] == channel }
-
-  # write to all channels
-  channels.each do |channel|
-    channel[:out] << "data: #{message.to_json}\n\n"
-  end
 
   204 # response without entity body
 end
