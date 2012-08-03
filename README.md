@@ -1,4 +1,4 @@
-kiosk
-=====
+minichat
+========
 
-kiosk server
+A mini chat app written with Sinatra
