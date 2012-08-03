@@ -41,9 +41,10 @@ get '/stream/:channel', provides: 'text/event-stream' do
     channels << { channel: channel, out: out }
 
     # delete channel
-    out.callback {
-      channels.delete_if {|hash| hash[channel] == channel}
-    }
+    out.callback do
+      puts "=> closing channels:"
+      puts channels.delete_if {|hash| hash[channel] == channel}
+    end
   end
 end
 
@@ -60,11 +61,14 @@ post '/' do
     content: params[:content]
   }
 
-  # get channels that match the channel name
-  channels.select {|f| f[:channel] == channel }
-
-  puts "=> write to these channels:"
-  puts channels
+  # Get channels that match the channel name.
+  # FIXME:
+  # This implementation does not currently work
+  # because the channels array gets clobbered when
+  # a new request is made to a different channel.
+  # This probably needs a real persistance layer,
+  # not 100% sure though.
+  channels = channels.select {|f| f[:channel] == channel }
 
   # write to all channels
   channels.each do |channel|
