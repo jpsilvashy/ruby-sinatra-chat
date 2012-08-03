@@ -1,0 +1,36 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    daemons (1.1.8)
+    eventmachine (0.12.10)
+    forgery (0.5.0)
+    httparty (0.8.3)
+      multi_json (~> 1.0)
+      multi_xml
+    json (1.7.4)
+    multi_json (1.3.6)
+    multi_xml (0.5.1)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    ruby-ip (0.9.1)
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    thin (1.4.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    tilt (1.3.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  forgery
+  httparty
+  json
+  ruby-ip
+  sinatra
+  thin

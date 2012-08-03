@@ -1,0 +1,7 @@
+<p>No channel specified</p>
+
+<ul>
+  <% channels.each do |k,v| %>
+    <li><a href='/<%= k %>'>join channel <%= k %></a></li>
+  <% end %>
+</ul>
