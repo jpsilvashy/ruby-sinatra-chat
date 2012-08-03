@@ -63,6 +63,9 @@ post '/' do
   # get channels that match the channel name
   channels.select {|f| f[:channel] == channel }
 
+  puts "=> write to these channels:"
+  puts channels
+
   # write to all channels
   channels.each do |channel|
     channel[:out] << "data: #{message.to_json}\n\n"
