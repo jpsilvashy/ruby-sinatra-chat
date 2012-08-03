@@ -16,5 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
+/db/*.sqlite3
 
 .DS_Store
