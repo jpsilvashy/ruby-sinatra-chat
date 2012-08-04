@@ -70,6 +70,8 @@ post '/' do
   # form message
   message = {
     channel: channel,
+
+    user_id: params[:user_id],
     ip: IP.new(request.ip),
     color: params[:color],
     content: params[:content]
@@ -77,6 +79,7 @@ post '/' do
 
   # insert needed records
   current_channel.messages.create({
+    user_id: params[:user_id],
     ip: IP.new(request.ip),
     color: params[:color],
     content: params[:content]

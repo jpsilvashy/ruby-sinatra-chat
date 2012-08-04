@@ -10,6 +10,7 @@ class Channel
   property :updated_at  , DateTime
 
   has n, :messages
+  has n, :users
 end
 
 class Message
@@ -23,6 +24,15 @@ class Message
   property :created_at  , DateTime
 
   belongs_to :channel
+  belongs_to :user
+end
+
+class User
+  include DataMapper::Resource
+
+  property :id        , String, key: true, unique_index: true
+
+  has n, :messages
 end
 
 DataMapper.auto_migrate!

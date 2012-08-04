@@ -6,7 +6,9 @@
   </ol>
 
   <form>
-    <input id='message' style='border-left-color: <%= session[:color] %>' data-color="<%= session[:color] %>" placeholder='type message here...' />
+    <input id='message' style='border-left-color: <%= session[:color] %>' data-color="<%= session[:color] %>" data-user-id="<%= session[:session_id] %>" placeholder='type message here...' />
+    <!-- <textarea id='message' style='border-left-color: <%= session[:color] %>' data-color="<%= session[:color] %>" data-user-id="<%= session[:session_id] %>" placeholder='type message here...'></textarea> -->
+    <!-- <button>Send</button> -->
   </form>
 </div>
 

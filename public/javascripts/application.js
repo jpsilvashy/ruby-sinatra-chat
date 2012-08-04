@@ -1,4 +1,6 @@
 var channel = window.location.pathname.substr(1);
+var user_id = $('meta[name=user_id]').attr("content");
+var new_messages = 0
 
 console.log("channel:", channel);
 
@@ -16,6 +18,19 @@ function playSound(sound_name) {
   sound.play()
 }
 
+// update title
+function set_title(content) {
+  $('title').text(content);
+}
+
+function flash_title(title) {
+  if ($('title').text() == 'Chattyloo') {
+    set_title(title)
+  } else {
+    set_title('Chattyloo')
+  }
+}
+
 // Handle messages
 function handleMessage(message) {
 
@@ -24,9 +39,18 @@ function handleMessage(message) {
   chat_message.css("border-left-color", message.color);
 
   $('#events').append(chat_message);
-  playSound('recieve')
 
-  console.log(message, message.color, latency(message.timestamp))
+  // if message.session_id ==
+  if (user_id == message.user_id) {
+    playSound('send');
+  } else {
+    playSound('recieve');
+    new_messages++
+    flasher_title_int = self.setInterval("flash_title('New Message')", 1000);
+  }
+
+
+  // console.log(message, message.color, latency(message.timestamp))
 }
 
 // Recieve messages from eventsource, send to handler
@@ -41,11 +65,21 @@ event_source.onclose = function(event) {
 
 $(document).ready(function() {
 
+  // return title of page back to normal
+  $(window).bind('keydown click', function() {
+    if (new_messages > 0) {
+      set_title('Chattyloo');
+      window.flasher_title_int = window.clearInterval(flasher_title_int);
+    }
+    new_messages = 0;
+  });
+
   $("form").live("submit", function(e) {
     $.post('/', {
       content: $('#message').val(),
       channel: channel,
-      color: $('#message').data('color')
+      color: $('#message').data('color'),
+      user_id: $('#message').data('user-id')
     });
 
     console.log($('#message').val());
