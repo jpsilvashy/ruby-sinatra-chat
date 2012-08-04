@@ -41,38 +41,23 @@ get '/stream/:channel', provides: 'text/event-stream' do
 
     # insert stream into channels
     channels << { channel: channel, out: out }
-    # Channel.first_or_create({ slug: channel })
 
     # delete channel
     out.callback do
-      puts channels.delete_if {|hash| hash[channel] == channel}
+      # channels.delete_if {|hash| hash[channel] == channel}
+      puts "=> delete!!!!"
     end
 
     puts "=> channels:"
-    puts channels
+    puts channels.each {|c| puts c[:channel]}
     puts
   end
 end
 
 post '/' do
   channel = params[:channel]
-  puts "=> post / [#{channel}]"
-  puts "=> params #{params}"
-
-  # get proper channel
-  active = channels.detect {|f| f[:channel] == channel }
-
-  # get from db too
-  # chan = Channel.get(channel)
-
-  # puts "=> dm channel"
-  # puts chan.messages.create({ content: params[:content] })
-  # puts "=> messages on chan: #{chan.messages.count}"
-
-  # Not working.
-  # chan.messages.each do |msg|
-  #   active[:out] << "data: #{{content: msg.content}.to_json}\n\n"
-  # end
+  # puts "=> post / [#{channel}]"
+  # puts "=> params #{params}"
 
   # form message
   message = {
@@ -82,8 +67,6 @@ post '/' do
     content: params[:content]
   }
 
-  active[:out] << "data: #{message.to_json}\n\n"
-
   # Get channels that match the channel name.
   # FIXME:
   # This implementation does not currently work
@@ -91,6 +74,11 @@ post '/' do
   # a new request is made to a different channel.
   # This probably needs a real persistance layer,
   # not 100% sure though.
+  active_channels = channels.select {|f| f[:channel] == channel }
+
+  active_channels.each do |chn|
+    chn[:out] << "data: #{message.to_json}\n\n"
+  end
 
   204 # response without entity body
 end

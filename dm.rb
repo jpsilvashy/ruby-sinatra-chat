@@ -3,7 +3,7 @@ require 'dm-timestamps'
 require 'dm-validations'
 require 'dm-migrations'
 
-DataMapper.setup :default, "sqlite://#{Dir.pwd}/minichat.db"
+DataMapper.setup(:default, "sqlite3::memory:")
 
 class Channel
   include DataMapper::Resource
