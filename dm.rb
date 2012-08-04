@@ -3,7 +3,7 @@ require 'dm-timestamps'
 require 'dm-validations'
 require 'dm-migrations'
 
-DataMapper.setup(:default, "sqlite3::memory:")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3::memory:")
 
 class Channel
   include DataMapper::Resource
