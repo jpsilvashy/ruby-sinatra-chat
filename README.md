@@ -1,5 +1,5 @@
-Minichat
-========
+Chattyloo
+=========
 
 A mini asynchronous chat app written with Sinatra and persisted with Postgres or SQLite using Datamapper. There is not authentication scheme. Users arrive at the index and are redirected to a chat room with a unique URL that can be shared for others to join the room.
 
@@ -8,27 +8,27 @@ A mini asynchronous chat app written with Sinatra and persisted with Postgres or
 First clone the repository:
 
 ``` sh
-git clone git@github.com:jpsilvashy/minichat.git
+git clone git@github.com:jpsilvashy/chattyloo.git
 ```
 
 Run the `bundle` command at the root of the project:
 
 ``` sh
-cd minichat/
+cd chattyloo/
 bundle
 ```
 
 Then you should be able to start the server:
 
 ``` sh
-./minichat.rb
+./chattyloo.rb
 ```
 
 Then just go to [localhost:4567](http://localhost:4567), and start chatting!
 
 ### Deploying to Heroku
 
-You can deploy your own minichat app! Here are the instructions for deploying to [Heroku](http://heroku.com).
+You can deploy your own chattyloo app! Here are the instructions for deploying to [Heroku](http://heroku.com).
 
 First in the root creat a new heroku app:
 
