@@ -6,8 +6,14 @@ var event_source = new EventSource("/stream/" + channel);
 
 // Calculate latency of messages
 function latency(time) {
-  current_time = new Date().getTime().toFixed(3);
+  var current_time = new Date().getTime().toFixed(3);
   return (current_time - time).toFixed(3);
+}
+
+// Play sound files
+function playSound(sound_name) {
+  var sound = new Audio("/audio/" + sound_name + ".wav"); // buffers automatically when created
+  sound.play()
 }
 
 // Handle messages
@@ -18,6 +24,7 @@ function handleMessage(message) {
   chat_message.css("border-left-color", message.color);
 
   $('#events').append(chat_message);
+  playSound('recieve')
 
   console.log(message, message.color, latency(message.timestamp))
 }
