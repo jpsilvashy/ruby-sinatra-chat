@@ -1,7 +1,4 @@
-require 'dm-core'
-require 'dm-timestamps'
-require 'dm-validations'
-require 'dm-migrations'
+require 'data_mapper'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3::memory:")
 
