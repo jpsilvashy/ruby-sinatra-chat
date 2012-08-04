@@ -1,6 +1,8 @@
 Chattyloo
 =========
 
+This is the code for [chattyloo.com](http://chattyloo.com)
+
 A mini asynchronous chat app written with Sinatra and persisted with Postgres or SQLite using Datamapper. There is not authentication scheme. Users arrive at the index and are redirected to a chat room with a unique URL that can be shared for others to join the room.
 
 ### Usage
