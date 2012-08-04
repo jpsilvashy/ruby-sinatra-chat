@@ -1,5 +1,9 @@
 <div id="chat_window">
-  <ol id='events'></ol>
+  <ol id='events'>
+    <% @current_channel.messages.each do |message| %>
+      <li><%= message.content %></li>
+    <% end %>
+  </ol>
   <form>
     <input id='message' placeholder='type message here...' />
   </form>

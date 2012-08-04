@@ -30,6 +30,8 @@ get '/:channel' do
   params[:channel]
   puts "=> get / [#{params[:channel]}]"
 
+  @current_channel = Channel.first_or_create({ slug: params[:channel] })
+
   erb :channel
 end
 
@@ -55,7 +57,7 @@ post '/' do
   # puts "=> post / [#{channel}]"
   # puts "=> params #{params}"
 
-  current_channel = Channel.first_or_create({ slug: params[:channel] })
+  current_channel = Channel.first({ slug: params[:channel] })
 
   # form message
   message = {
@@ -64,6 +66,8 @@ post '/' do
     color: Forgery::Basic.hex_color,
     content: params[:content]
   }
+
+  current_channel.messages.create({ content: params[:content] })
 
   # Get channels that match the channel name.
   # FIXME:
