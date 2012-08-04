@@ -6,7 +6,7 @@ require 'json'
 require 'ip'
 require 'forgery'
 
-# require_relative 'dm'
+require_relative 'dm'
 
 set :server, 'thin'
 
@@ -20,7 +20,7 @@ get '/' do
     Forgery::Name.female_first_name,
     Forgery::Basic.color,
     Forgery::Address.street_name.split(" ").first
-    ].join("-").downcase
+  ].join("-").downcase
 
   # redirect to a random fun name!
   redirect random_name
@@ -44,13 +44,9 @@ get '/stream/:channel', provides: 'text/event-stream' do
 
     # delete channel
     out.callback do
+      puts "=> delete channel"
       # channels.delete_if {|hash| hash[channel] == channel}
-      puts "=> delete!!!!"
     end
-
-    puts "=> channels:"
-    puts channels.each {|c| puts c[:channel]}
-    puts
   end
 end
 
@@ -58,6 +54,8 @@ post '/' do
   channel = params[:channel]
   # puts "=> post / [#{channel}]"
   # puts "=> params #{params}"
+
+  current_channel = Channel.first_or_create({ slug: params[:channel] })
 
   # form message
   message = {

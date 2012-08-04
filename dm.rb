@@ -9,8 +9,6 @@ class Channel
   include DataMapper::Resource
 
   property :slug      , String, key: true, unique_index: true
-  property :username  , String
-  property :content   , String
   property :created_at, DateTime
   property :updated_at, DateTime
 
