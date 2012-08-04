@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="/stylesheets/reset.css">
   <link rel="stylesheet" href="/stylesheets/application.css">
 <body>
+  <header>
+    <div class="callout">
+      <strong>Hey friend!</strong> You just joined a Chattyloo chat, share the url <a href="http://chattyloo.com/<%= params[:channel] %>">chattyloo.com/<%= params[:channel] %></a> with your friends to chat with them! <a href="http://jpsilvashy.com/posts/chattyloo">Read more about Chattyloo &rarr;</a>
+    </div>
+  </header>
+
   <%= yield %>
 </body>
 </html>

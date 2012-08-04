@@ -1,6 +1,8 @@
 source :rubygems
 
 gem 'sinatra'
+gem 'sinatra-session'
+
 gem 'thin'
 gem 'json'
 gem 'httparty'

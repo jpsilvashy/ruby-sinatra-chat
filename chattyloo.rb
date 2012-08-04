@@ -2,6 +2,8 @@
 # coding: utf-8
 
 require 'sinatra'
+require 'sinatra/session'
+
 require 'json'
 require 'ip'
 require 'forgery'
@@ -9,6 +11,7 @@ require 'forgery'
 require_relative 'dm'
 
 set :server, 'thin'
+set :session_secret, 'super-secret'
 
 channels = []
 chatters = []
@@ -30,9 +33,14 @@ get '/:channel' do
   params[:channel]
   puts "=> get / [#{params[:channel]}]"
 
+  # start session
+  session_start!
+  session[:color] = Forgery::Basic.hex_color
+
+  # get channel from db
   @current_channel = Channel.first_or_create({ slug: params[:channel] })
 
-  erb :channel
+  erb :channel, locals: { session: session }
 end
 
 get '/stream/:channel', provides: 'text/event-stream' do
@@ -54,8 +62,8 @@ end
 
 post '/' do
   channel = params[:channel]
-  # puts "=> post / [#{channel}]"
-  # puts "=> params #{params}"
+  puts "=> post / [#{channel}]"
+  puts "=> params #{params}"
 
   current_channel = Channel.first({ slug: params[:channel] })
 
@@ -63,11 +71,16 @@ post '/' do
   message = {
     channel: channel,
     ip: IP.new(request.ip),
-    color: Forgery::Basic.hex_color,
+    color: params[:color],
     content: params[:content]
   }
 
-  current_channel.messages.create({ content: params[:content] })
+  # insert needed records
+  current_channel.messages.create({
+    ip: IP.new(request.ip),
+    color: params[:color],
+    content: params[:content]
+  })
 
   # Get channels that match the channel name.
   # FIXME:

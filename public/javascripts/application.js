@@ -20,7 +20,6 @@ function handleMessage(message) {
   $('#events').append(chat_message);
 
   console.log(message, message.color, latency(message.timestamp))
-
 }
 
 // Recieve messages from eventsource, send to handler
@@ -39,6 +38,7 @@ $(document).ready(function() {
     $.post('/', {
       content: $('#message').val(),
       channel: channel,
+      color: $('#message').data('color')
     });
 
     console.log($('#message').val());

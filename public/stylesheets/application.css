@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
+:focus {
+  outline: 0;
+}
+
 body {
   padding: 50px;
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,22 +28,64 @@ form {
 }
 
 form input {
-  margin: 20px 50px;
-  border:none;
+  margin: 20px;
+  padding: 10px;
+
+  border:0;
+  border-left: 6px solid #ccc;
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ol#events {
   position: absolute;
-  bottom: 76px;
+  bottom: 90px;
   width: 100%;
   list-style-type: none;
 }
 
 ol#events li {
-  margin: 4px 50px 4px 34px;
+  margin: 4px 20px;
   display: block;
   padding: 10px;
   border-left: 6px solid #ccc;
+}
+
+header {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index: 999;
+
+  background-image: -webkit-gradient(
+    linear, left top, left bottom,
+    from(rgba(255, 255, 255, 1)),
+    to(rgba(255, 255, 255, 0))
+  );
+
+  background-image: -moz-linear-gradient(
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.callout {
+  margin: 20px 20px 80px 20px;
+  color: #7d7a64;
+  text-shadow: 0 1px 0 white;
+  padding: 10px 16px;
+  background: #fffce5;
+  border: 1px solid #fcf9e1;
+  border-bottom: 1px solid #f2eece;
+  border-radius: 3px;
+  overflow-x: auto;
+}
+
+.callout a {
+  color: #7d7a64;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(125,122,100,0.25);
 }
 

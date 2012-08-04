@@ -5,9 +5,9 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3::memory:")
 class Channel
   include DataMapper::Resource
 
-  property :slug      , String, key: true, unique_index: true
-  property :created_at, DateTime
-  property :updated_at, DateTime
+  property :slug        , String, key: true, unique_index: true
+  property :created_at  , DateTime
+  property :updated_at  , DateTime
 
   has n, :messages
 end
@@ -15,9 +15,12 @@ end
 class Message
   include DataMapper::Resource
 
-  property :id        , Serial
-  property :content   , String
-  property :created_at, DateTime
+  property :id          , Serial
+
+  property :ip          , String
+  property :content     , String
+  property :color       , String
+  property :created_at  , DateTime
 
   belongs_to :channel
 end
