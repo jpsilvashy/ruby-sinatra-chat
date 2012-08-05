@@ -85,14 +85,12 @@ post '/' do
   }
 
   # insert needed records
-  m = current_channel.messages.create({
+  current_channel.messages.create({
     # user_id: params[:user_id],
     ip: IP.new(request.ip),
     color: params[:color],
     content: params[:content]
   })
-
-  puts "=> m: #{m.channel}"
 
   # Get channels that match the channel name.
   active_channels = channels.select {|f| f[:channel] == channel }
