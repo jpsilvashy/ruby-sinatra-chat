@@ -42,8 +42,8 @@ get '/:channel' do
   session[:color] = Forgery::Basic.hex_color
 
   # get channel from db
-  @current_channel = Channel.first_or_create({ slug: params[:channel] })
-  puts "=> current_channel #{@current_channel}"
+  @current_channel = Channel.create( slug: params[:channel] )
+  puts "=> current_channel #{@current_channel.messages}"
 
   erb :channel, locals: { session: session }
 end
@@ -71,6 +71,7 @@ post '/' do
   puts "=> params #{params}"
 
   current_channel = Channel.first({ slug: params[:channel] })
+  puts "=> channel first: #{current_channel}"
 
   puts "=> current channel"
   puts current_channel.messages
