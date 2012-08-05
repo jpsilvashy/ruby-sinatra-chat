@@ -29,6 +29,10 @@ get '/' do
   redirect random_name
 end
 
+get '/status' do
+  'OK'
+end
+
 get '/:channel' do
   params[:channel]
   puts "=> get / [#{params[:channel]}]"
