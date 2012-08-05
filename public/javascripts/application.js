@@ -2,8 +2,6 @@ var channel = window.location.pathname.substr(1);
 var user_id = $('meta[name=user_id]').attr("content");
 var new_messages = 0
 
-console.log("channel:", channel);
-
 var event_source = new EventSource("/stream/" + channel);
 
 // Calculate latency of messages
@@ -49,8 +47,8 @@ function handleMessage(message) {
     flasher_title_int = self.setInterval("flashTitle('New Message')", 1000);
   }
 
-
-  // console.log(message, message.color, latency(message.timestamp))
+  chat_message.highlight("<3", { className: 'heart' });
+  chat_message.highlight(":)", { className: 'smiley' });
 }
 
 // Recieve messages from eventsource, send to handler
@@ -71,6 +69,9 @@ function resetForm() {
 $(document).ready(function() {
   $('#message').autosize();
   resetForm();
+
+  $('li').highlight("<3", { className: 'heart' });
+  $('li').highlight(":)", { className: 'smiley' });
 
   // return title of page back to normal
   $(window).bind('keydown click', function() {

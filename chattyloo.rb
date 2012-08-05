@@ -42,8 +42,9 @@ get '/:channel' do
   session[:color] = Forgery::Basic.hex_color
 
   # get channel from db
-  @current_channel = Channel.create( slug: params[:channel] )
-  puts "=> current_channel #{@current_channel.messages}"
+  @current_channel = Channel.first_or_create({ slug: params[:channel] })
+
+  puts "=> [get] Channel first: #{@current_channel}"
 
   erb :channel, locals: { session: session }
 end
@@ -70,11 +71,8 @@ post '/' do
   puts "=> post / [#{channel}]"
   puts "=> params #{params}"
 
-  current_channel = Channel.first({ slug: params[:channel] })
-  puts "=> channel first: #{current_channel}"
-
-  puts "=> current channel"
-  puts current_channel.messages
+  current_channel = Channel.first_or_create({ slug: channel })
+  puts "=> [post] Channel first: #{current_channel.messages.count}"
 
   # form message
   message = {
@@ -87,12 +85,14 @@ post '/' do
   }
 
   # insert needed records
-  current_channel.messages.create({
-    user_id: params[:user_id],
+  m = current_channel.messages.create({
+    # user_id: params[:user_id],
     ip: IP.new(request.ip),
     color: params[:color],
     content: params[:content]
   })
+
+  puts "=> m: #{m.channel}"
 
   # Get channels that match the channel name.
   active_channels = channels.select {|f| f[:channel] == channel }

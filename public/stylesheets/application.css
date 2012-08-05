@@ -26,6 +26,31 @@ ol#events li {
   border-left: 5px solid red;
 }
 
+/* substitutions */
+.heart {
+  display: inline-block;
+  letter-spacing: -2px;
+  font-weight: bold;
+
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.smiley {
+  display: inline-block;
+  margin: 0 8px;
+  font-weight: bold;
+
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
 form {
   margin:20px;
   position: relative;
