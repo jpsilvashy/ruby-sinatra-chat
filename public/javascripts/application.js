@@ -23,7 +23,7 @@ function set_title(content) {
   $('title').text(content);
 }
 
-function flash_title(title) {
+function flashTitle(title) {
   if ($('title').text() == 'Chattyloo') {
     set_title(title)
   } else {
@@ -46,7 +46,7 @@ function handleMessage(message) {
   } else {
     playSound('recieve');
     new_messages++
-    flasher_title_int = self.setInterval("flash_title('New Message')", 1000);
+    flasher_title_int = self.setInterval("flashTitle('New Message')", 1000);
   }
 
 
@@ -63,7 +63,14 @@ event_source.onclose = function(event) {
   console.log("closing connection");
 };
 
+function resetForm() {
+  $('form textarea').focus().val('');
+  $('form textarea').height('45px');
+}
+
 $(document).ready(function() {
+  $('#message').autosize();
+  resetForm();
 
   // return title of page back to normal
   $(window).bind('keydown click', function() {
@@ -74,6 +81,16 @@ $(document).ready(function() {
     new_messages = 0;
   });
 
+  $('form textarea').bind('keypress', function(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) {
+      $("form").submit();
+
+      resetForm();
+      e.preventDefault();
+    }
+  });
+
   $("form").live("submit", function(e) {
     $.post('/', {
       content: $('#message').val(),
@@ -82,11 +99,7 @@ $(document).ready(function() {
       user_id: $('#message').data('user-id')
     });
 
-    console.log($('#message').val());
-
-    $('#message').val('');
-    $('#message').focus();
-
+    resetForm();
     e.preventDefault();
   });
 });

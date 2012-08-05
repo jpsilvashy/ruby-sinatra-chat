@@ -6,11 +6,11 @@
   </ol>
 
   <form>
-    <input id='message' style='border-left-color: <%= session[:color] %>' data-color="<%= session[:color] %>" data-user-id="<%= session[:session_id] %>" placeholder='type message here...' />
-    <!-- <textarea id='message' style='border-left-color: <%= session[:color] %>' data-color="<%= session[:color] %>" data-user-id="<%= session[:session_id] %>" placeholder='type message here...'></textarea> -->
-    <!-- <button>Send</button> -->
+    <textarea id='message' data-color="<%= session[:color] %>" data-user-id="<%= session[:session_id] %>" placeholder='type message here...'></textarea>
+    <button>Send</button>
   </form>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src='/javascripts/jquery.autosize.js'></script>
 <script src='/javascripts/application.js'></script>

@@ -39,6 +39,7 @@ get '/:channel' do
 
   # get channel from db
   @current_channel = Channel.first_or_create({ slug: params[:channel] })
+  puts "=> current_channel #{@current_channel}"
 
   erb :channel, locals: { session: session }
 end
@@ -67,6 +68,9 @@ post '/' do
 
   current_channel = Channel.first({ slug: params[:channel] })
 
+  puts "=> current channel"
+  puts current_channel.messages
+
   # form message
   message = {
     channel: channel,
@@ -86,12 +90,6 @@ post '/' do
   })
 
   # Get channels that match the channel name.
-  # FIXME:
-  # This implementation does not currently work
-  # because the channels array gets clobbered when
-  # a new request is made to a different channel.
-  # This probably needs a real persistance layer,
-  # not 100% sure though.
   active_channels = channels.select {|f| f[:channel] == channel }
 
   active_channels.each do |chn|
