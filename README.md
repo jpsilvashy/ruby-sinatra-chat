@@ -1,6 +1,7 @@
 Chattyloo
 =========
 
+[![Build Status](https://secure.travis-ci.org/rails/rails.png?branch=master)](http://travis-ci.org/rails/rails)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jpsilvashy/chattyloo)
 
 [Chattyloo](http://chattyloo.com) is an asynchronous chat app written in Sinatra and persisted with Postgres or SQLite using Datamapper. There is no authentication scheme. Users arrive at the index and are redirected to a chat room with a unique URL that can be shared for others to join the room.
