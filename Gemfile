@@ -21,4 +21,7 @@ group :production do
   gem 'dm-postgres-adapter'
 end
 
+group :test do
+  gem 'rspec'
+end
 
