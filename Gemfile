@@ -15,8 +15,9 @@ gem 'forgery'
 gem 'data_mapper'
 
 group :development, :test do
-  gem 'dm-sqlite-adapter'
-  gem 'sqlite3'
+  # gem 'dm-sqlite-adapter'
+  # gem 'sqlite3'
+  gem 'dm-postgres-adapter'
 end
 
 group :production do

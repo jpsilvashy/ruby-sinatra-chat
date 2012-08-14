@@ -12,6 +12,7 @@ require_relative 'dm'
 
 set :server, 'thin'
 set :session_secret, 'super-secret'
+set :protection, :except => :frame_options
 
 channels = []
 chatters = []
