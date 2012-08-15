@@ -7,9 +7,7 @@
   </p>
 
   <!-- Place this element where you want the chat window -->
-  <div id="chattyloo">
-    <iframe src="http://chattyloo.com/chattyloo.com?embed=true" height='100%' width='100%' frameBorder='0'></iframe>
-  </div>
+  <div id="chattyloo"></div>
 </header>
 
 <section>
@@ -20,3 +18,12 @@
   <h2>Free and Open Source</h2>
   <p>There are a lot of solutions for chat out there, many cost money! Chattyloo is free and It&rsquo;s completely open-source, meaning <a href='http://github.com/jpsilvashy/chattyloo'>you can help make it better</a>! Learn more about <a href='http://jpsilvashy.com/posts/chattyloo'>how Chattyloo was built</a>.</p>
 </section>
+
+<script type="text/javascript">
+  var currentUrl = window.location.host + "/" + window.location.pathname;
+  var chattyloo = document.createElement("iframe");
+  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
+  chattyloo.setAttribute("height", "100%");
+  chattyloo.setAttribute("width", "100%");
+  document.getElementById('chattyloo').appendChild(chattyloo);
+</script>
