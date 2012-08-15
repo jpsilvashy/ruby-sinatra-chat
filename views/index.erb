@@ -23,9 +23,9 @@
   var currentUrl = (window.location.host + "-" + window.location.pathname).replace("/","-")
   var chattyloo = document.createElement("iframe");
 
-  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true")
-    .setAttribute("height", "100%")
-    .setAttribute("width", "100%");
+  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
+  chattyloo.setAttribute("height", "100%");
+  chattyloo.setAttribute("width", "100%");
 
   document.getElementById('chattyloo').appendChild(chattyloo);
 </script>
