@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Fredoka+One);
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC:400,700|Patrick+Hand);
 
 header {
   background: #0BB5FF;
@@ -34,9 +35,12 @@ section {
 }
 
 h1 {
-  font-family: 'Fredoka One', Helvetica;
-  font-weight: normal;
-  font-size: 72px;
+  font-family: 'Amatic SC', cursive;
+/*font-family: 'Patrick Hand', cursive;*/
+
+  /*font-family: 'Fredoka One', Helvetica;*/
+  font-weight: bold;
+  font-size: 90px;
   line-height: 1.35em;
 }
 
@@ -62,11 +66,24 @@ section h2 {
 #chattyloo {
   position: absolute;
   right:10%;
-  bottom:-150px;
+  bottom:-140px;
   height: 340px;
   width:30%;
   background: white;
   border-radius: 3px;
-  border: 5px solid #0088c3;
-  box-shadow: 0 0 3px rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.1);
+  /*box-shadow: 0 0 3px rgba(0,0,0,0.05);*/
+
+  -moz-background-clip: border;     /* Firefox 3.6 */
+  -webkit-background-clip: border;  /* Safari 4? Chrome 6? */
+  background-clip: border-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+  -moz-background-clip: padding;     /* Firefox 3.6 */
+  -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+  background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+  -moz-background-clip: content;     /* Firefox 3.6 */
+  -webkit-background-clip: content;  /* Safari 4? Chrome 6? */
+  background-clip: content-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
 }
