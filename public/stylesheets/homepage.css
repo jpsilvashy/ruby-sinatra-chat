@@ -3,9 +3,26 @@
 
 header {
   background: #0BB5FF;
-  padding:60px 10% 40px 10%;
+  padding:40px 10%;
   width:80%;
   position: relative;
+}
+
+section.secondary {
+  padding:40px 10%;
+  width:80%;
+}
+
+footer {
+  opacity: 0.5;
+  border-top: 1px solid #d8d8d8;
+  margin:0 10%;
+  padding:20px 0;
+  width:80%;
+}
+
+header.secondary {
+  padding:20px 10%;
 }
 
 header {
@@ -34,27 +51,40 @@ section {
   width:45%;
 }
 
-h1 {
+header h1 {
   font-family: 'Amatic SC', cursive;
-/*font-family: 'Patrick Hand', cursive;*/
-
-  /*font-family: 'Fredoka One', Helvetica;*/
   font-weight: bold;
-  font-size: 90px;
+  font-size: 94px;
   line-height: 1.35em;
+}
+
+header.secondary h1 {
+  font-size: 60px;
+}
+
+header.secondary h1 a {
+  border: 0;
 }
 
 h2 {
   font-family: Helvetica, Arial;
   font-size: 24px;
+  line-height: 1.5em;
+  margin-bottom: 0.25em;
 }
 
 p {
   font-family: Helvetica, Arial;
   font-size: 16px;
-  line-height: 1.5em;
+  line-height: 1.7em;
 }
 
+pre.prettyprint {
+  font-size: 14px;
+}
+
+
+/* Area below header */
 section p {
   margin-bottom: 1.5em;
 }
@@ -63,16 +93,40 @@ section h2 {
   line-height: 1.5em;
 }
 
+
+/* Code samples */
+code {
+  padding: 0 2px;
+}
+
+code, pre {
+  font-family: Monaco,​Consolas,​'Courier New',​Courier,​monospace;
+  color:black;
+  font-size: 12px;
+}
+
+pre {
+  color:white;
+  padding:10px 16px;
+  background: #2E3034;
+  border-radius:3px;
+  overflow-x: hidden;
+  text-shadow:0 1px 0 black;
+  border-bottom: 1px solid black;
+}
+
+
+
+/* Chat window styles */
 #chattyloo {
   position: absolute;
   right:10%;
-  bottom:-140px;
+  top:60px;
   height: 340px;
   width:30%;
   background: white;
   border-radius: 3px;
   border: 1px solid rgba(0,0,0,0.1);
-  /*box-shadow: 0 0 3px rgba(0,0,0,0.05);*/
 
   -moz-background-clip: border;     /* Firefox 3.6 */
   -webkit-background-clip: border;  /* Safari 4? Chrome 6? */

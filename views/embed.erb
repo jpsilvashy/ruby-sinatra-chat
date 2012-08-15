@@ -1,0 +1,36 @@
+<header class="secondary">
+  <h1><a href="/">Chattyloo</a></h1>
+</header>
+
+<section class="secondary">
+  <h2>Embedding Chattyloo</h2>
+  <p>Embedding Chattyloo is easy! There are a few snippets of code you'll need to paste into your site&rsquo;s HTML. If you don&tsquo;t know HTML, it&rsquo;s not that hard, just follow these simple steps.</p>
+
+  <p>First things first, paste the JavaScript above the <code>&lt;/body&gt;</code> tag.</p>
+
+<pre class="prettyprint lang-html">
+&lt;script type=&quot;text/javascript&quot;&gt;
+  var currentUrl = (window.location.host + &quot;-&quot; + window.location.pathname).replace(&quot;/&quot;,&quot;-&quot;)
+  var chattyloo = document.createElement(&quot;iframe&quot;);
+
+  chattyloo.setAttribute(&quot;src&quot;, &quot;http://chattyloo.com/&quot; + currentUrl + &quot;?embed=true&quot;);
+  chattyloo.setAttribute(&quot;height&quot;, &quot;100%&quot;);
+  chattyloo.setAttribute(&quot;width&quot;, &quot;100%&quot;);
+
+  document.getElementById('chattyloo').appendChild(chattyloo);
+&lt;/script&gt;
+</pre>
+
+  <p>Next, in your HTML, decide where you want your chat window to be, and place our empty HTML.</p>
+
+<pre class="prettyprint lang-html">
+&lt;div id=&quot;chattyloo&quot;&gt;&lt;/div&gt;
+</pre>
+
+  <p>Your site doesn&rsquo;t need to be deployed to your server for you to test it out, go ahead and open your page, a Chattyloo chatroom should appear where you pasted the empty div!</p>
+
+</section>
+
+<footer>
+  <p>Created by <a href="http://jpsilvashy.com">Joseph Silvashy</a></p>
+</footer>

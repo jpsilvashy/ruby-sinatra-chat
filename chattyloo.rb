@@ -21,6 +21,10 @@ get '/' do
   erb :index
 end
 
+get '/embed' do
+  erb :embed
+end
+
 get '/random' do
 
   # generate a lol name

@@ -3,7 +3,7 @@
   <h2>Embed a chatroom anywhere, for free!</h2>
   <p>
     No signup needed, and it takes less than 5 minutes to<br>
-    embed into your site! <a href="#">Get Started &rarr;</a>
+    embed into your site! <a href="/embed">Get Started &rarr;</a>
   </p>
 
   <!-- Place this element where you want the chat window -->
@@ -19,6 +19,7 @@
   <p>There are a lot of solutions for chat out there, many cost money! Chattyloo is free and It&rsquo;s completely open-source, meaning <a href='http://github.com/jpsilvashy/chattyloo'>you can help make it better</a>! Learn more about <a href='http://jpsilvashy.com/posts/chattyloo'>how Chattyloo was built</a>.</p>
 </section>
 
+<!-- Place the javascript just above the </body> tag -->
 <script type="text/javascript">
   var currentUrl = (window.location.host + "-" + window.location.pathname).replace("/","-")
   var chattyloo = document.createElement("iframe");
@@ -29,3 +30,7 @@
 
   document.getElementById('chattyloo').appendChild(chattyloo);
 </script>
+
+<footer>
+  <p>Created by <a href="http://jpsilvashy.com">Joseph Silvashy</a></p>
+</footer>
