@@ -67,8 +67,8 @@ function resetForm() {
 }
 
 $(document).ready(function() {
-  $('#message').autosize();
   resetForm();
+  $('#message').autosize();
 
   $('li').highlight("<3", { className: 'heart' });
   $('li').highlight(":)", { className: 'smiley' });
@@ -88,6 +88,7 @@ $(document).ready(function() {
       $("form").submit();
 
       resetForm();
+      $('#message').autosize();
       e.preventDefault();
     }
   });
@@ -101,6 +102,7 @@ $(document).ready(function() {
     });
 
     resetForm();
+    $('#message').autosize();
     e.preventDefault();
   });
 });
