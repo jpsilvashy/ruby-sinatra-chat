@@ -1,0 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One);
+
+header {
+  background: #0BB5FF;
+  padding:60px 10% 40px 10%;
+  width:80%;
+  position: relative;
+}
+
+header {
+  color:white;
+}
+
+header h2, header p {
+  width: 55%;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 3px solid rgba(255,255,255,0.5);
+  font-weight: bold;
+}
+
+section {
+  padding:40px 45% 40px 10%;
+  width:45%;
+}
+
+h1 {
+  font-family: 'Fredoka One', Helvetica;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 1.35em;
+}
+
+h2 {
+  font-family: Helvetica, Arial;
+  font-size: 24px;
+}
+
+p {
+  font-family: Helvetica, Arial;
+  font-size: 16px;
+}
+
+section p {
+  margin-bottom: 1.5em;
+}
+
+section h2 {
+  line-height: 1.5em;
+}
+
+#chattyloo {
+  position: absolute;
+  right:10%;
+  bottom:-150px;
+  height: 340px;
+  width:30%;
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #299dcf;
+  box-shadow: 0 0 3px rgba(0,0,0,0.25);
+}

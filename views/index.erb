@@ -1,7 +1,22 @@
-<p>No channel specified</p>
+<header>
+  <h1>Chattyloo</h1>
+  <h2>Embed a chatroom anywhere, for free!</h2>
+  <p>
+    No signup needed, and it takes less than 5 minutes to<br>
+    embed into your site! <a href="#">Get Started &rarr;</a>
+  </p>
 
-<ul>
-  <% channels.each do |k,v| %>
-    <li><a href='/<%= k %>'>join channel <%= k %></a></li>
-  <% end %>
-</ul>
+  <!-- Place this element where you want the chat window -->
+  <div id="chattyloo">
+    <iframe src="http://chattyloo.com/chattyloo.com?embed=true" height='100%' width='100%' frameBorder='0'></iframe>
+  </div>
+</header>
+
+<section>
+  <h2>What is Chattyloo anyway?</h2>
+  <p>Chattyloo is a simple asynchronus chat application written in Ruby. It's simple to embed and it&rsquo;s simple to use, in fact, users don't have to signin, they don't have nicknames or avatars. If you need those features Chattyloo isn't for you!</p>
+  <p>Right now, users are identified by a random color that is generated when they enter the chat, we're working on a better solution, but it&rsquo;s inteded to stay simple and fun.</p>
+
+  <h2>Free and Open Source</h2>
+  <p>There are a lot of solutions for chat out there, many cost money! Chattyloo is free and It&rsquo;s completely open-source, meaning you can help make it better!</p>
+</section>

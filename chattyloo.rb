@@ -18,6 +18,10 @@ channels = []
 chatters = []
 
 get '/' do
+  erb :index
+end
+
+get '/random' do
 
   # generate a lol name
   random_name = [
