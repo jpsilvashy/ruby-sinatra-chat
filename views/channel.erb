@@ -1,7 +1,7 @@
 <div id="chat_window">
   <ol id='events'>
     <% @messages.each do |message| %>
-      <li style="border-left-color: #<%= message['session_id'][0..2] %>">
+      <li style="border-left-color: #<%= message['session_id'][0..2] if message['session_id'] %>">
         <%= message['body'] %>
       </li>
     <% end %>
