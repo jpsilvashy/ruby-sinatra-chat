@@ -45,7 +45,8 @@ $(document).ready(function() {
         channel: channel,
         session_id: session_id,
         body: $('form textarea').val(),
-        success: function(event) { resetForm() }
+      }, function() {
+        resetForm();
       });
     }
 
