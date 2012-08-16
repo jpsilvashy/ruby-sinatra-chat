@@ -1,4 +1,5 @@
 get '/:channel' do
+  session_start!
 
   # Get the current channel and messages from IronCache
   @channel = Channel.find_or_initialize(params[:channel])

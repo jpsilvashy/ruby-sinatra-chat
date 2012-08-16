@@ -4,7 +4,9 @@ var session_id = $('meta[name=session_id]').attr("content");
 
 // Handle messages
 function handleMessage(message) {
-  var message = $("<li>").text(message.body);
+  var color = message.session_id.substring(0, 3);
+  var message = $("<li>").text(message.body).css('borderLeftColor', color);
+
   $('#events').append(message);
 }
 
@@ -24,7 +26,14 @@ function resetForm() {
   $('form textarea').focus().val('');
 }
 
+function login() {
+  // does nothing yet
+}
+
 $(document).ready(function() {
+
+  // log user in
+  login();
 
   // Bind enter key to submit form
   $('form').bind('keypress', function(event) {

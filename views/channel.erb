@@ -1,7 +1,9 @@
 <div id="chat_window">
   <ol id='events'>
     <% @messages.each do |message| %>
-      <li><%= message['body'] %></li>
+      <li style="border-left-color: #<%= message['session_id'][0..2] %>">
+        <%= message['body'] %>
+      </li>
     <% end %>
   </ol>
 
@@ -12,6 +14,4 @@
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src='/javascripts/jquery.autosize.js'></script>
-<script src='/javascripts/jquery.highlight.js'></script>
 <script src='/javascripts/application.js'></script>
