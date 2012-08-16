@@ -14,6 +14,8 @@ gem 'forgery'
 
 gem 'data_mapper'
 
+gem 'iron_cache'
+
 group :development, :test do
   gem 'dm-sqlite-adapter'
   gem 'sqlite3'

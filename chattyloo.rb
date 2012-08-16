@@ -10,6 +10,10 @@ require 'forgery'
 
 require_relative 'dm'
 
+# IronCache
+require 'iron_cache'
+store = IronCache::Client.new
+
 set :server, 'thin'
 set :session_secret, 'super-secret'
 set :protection, :except => :frame_options
@@ -52,6 +56,7 @@ get '/:channel' do
 
   # get channel from db
   @current_channel = Channel.first_or_create({ slug: params[:channel] })
+  @current_channel_iron = store.cache(params[:channel])
 
   puts "=> [get] Channel first: #{@current_channel}"
 
@@ -81,6 +86,10 @@ post '/' do
   puts "=> params #{params}"
 
   current_channel = Channel.first_or_create({ slug: channel })
+  current_channel_iron = store.cache(params[:channel])
+
+  puts "=> IronCache Cache: #{current_channel_iron}"
+
   puts "=> [post] Channel first: #{current_channel.messages.count}"
 
   # form message
