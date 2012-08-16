@@ -23,7 +23,7 @@ ol#events {
 ol#events li {
   margin:5px 20px 0 20px;
   padding:0 11px;
-  border-left: 5px solid red;
+  border-left: 5px solid #ccc;
 }
 
 /* substitutions */
@@ -56,7 +56,7 @@ form {
   position: relative;
 }
 
-textarea {
+form textarea {
   border:1px solid #ccc;
   border-top: 1px solid #aaa;
   padding: 10px 70px 10px 15px;
@@ -73,109 +73,4 @@ form button {
   right:8px;
   border-radius: 3px;
   border:1px solid #ccc;
-}
-
-header {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  z-index: 999;
-
-  background-image: -webkit-gradient(
-    linear, left top, left bottom,
-    from(rgba(255, 255, 255, 1)),
-    to(rgba(255, 255, 255, 0)),
-    color-stop(.5, rgba(255, 255, 255, 1))
-    );
-
-  background-image: -moz-linear-gradient(
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-    );
-}
-
-.callout {
-  margin: 20px 20px 80px 20px;
-  color: #7d7a64;
-  text-shadow: 0 1px 0 white;
-  padding: 10px 16px;
-  background: #fffce5;
-  border: 1px solid #fcf9e1;
-  border-bottom: 1px solid #f2eece;
-  border-radius: 3px;
-  overflow-x: auto;
-}
-
-.callout a {
-  color: #7d7a64;
-  text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid rgba(125,122,100,0.25);
-}
-
-/* buttons */
-button {
-  overflow: visible;
-  display: inline-block;
-  padding: 6px 15px;
-  border: 1px solid #d4d4d4;
-  margin: 0;
-  text-decoration: none;
-  text-align: center;
-  text-shadow: 1px 1px 0 #fff;
-  font: 12px/1.25 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  color: #333;
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
-  background-color: #ececec;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
-  background-image: -moz-linear-gradient(#f4f4f4, #ececec);
-  background-image: -ms-linear-gradient(#f4f4f4, #ececec);
-  background-image: -o-linear-gradient(#f4f4f4, #ececec);
-  background-image: linear-gradient(#f4f4f4, #ececec);
-  -moz-background-clip: padding; /* for Firefox 3.6 */
-  background-clip: padding-box;
-  border-radius: 0.2em;
-
-  /* IE hacks */
-  zoom: 1;
-  *display: inline;
-}
-
-button:hover,
-button:focus,
-button:active,
-button.active {
-  border-color: #3072b3;
-  border-bottom-color: #2a65a0;
-  text-decoration: none;
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
-  color: #fff;
-  background-color: #3c8dde;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
-  background-image: -moz-linear-gradient(#599bdc, #3072b3);
-  background-image: -o-linear-gradient(#599bdc, #3072b3);
-  background-image: linear-gradient(#599bdc, #3072b3);
-}
-
-button:active,
-button.active {
-  border-color: #2a65a0;
-  border-bottom-color: #3884cd;
-  background-color: #3072b3;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3072b3), to(#599bdc));
-  background-image: -moz-linear-gradient(#3072b3, #599bdc);
-  background-image: -ms-linear-gradient(#3072b3, #599bdc);
-  background-image: -o-linear-gradient(#3072b3, #599bdc);
-  background-image: linear-gradient(#3072b3, #599bdc);
-}
-
-/* overrides extra padding on button elements in Firefox */
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
 }

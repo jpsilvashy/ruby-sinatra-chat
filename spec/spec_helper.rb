@@ -3,7 +3,7 @@ if ENV['COVERAGE']
   SimpleCov.start
 end
 
-require File.join(File.dirname(__FILE__), '..', 'chattyloo.rb')
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 require 'sinatra'
 require 'rack/test'

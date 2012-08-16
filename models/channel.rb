@@ -26,8 +26,8 @@ class Channel
 
   # Inserts a new message into the channel
   def insert(message)
-    self.messages.unshift message
-    self.messages = self.messages.first(settings.channel_message_limit)
+    self.messages.push message
+    self.messages = self.messages.last(settings.channel_message_limit)
     self.save
   end
 
@@ -41,6 +41,5 @@ class Channel
   def streams
     settings.streams.select { |f| f[:channel] == self.name }
   end
-
 
 end

@@ -19,7 +19,7 @@ set :session_secret, 'super-secret'
 set :protection, :except => :frame_options
 
 set :ironcache, IronCache::Client.new( token: ENV["IRON_CACHE_TOKEN"], project_id: ENV["IRON_CACHE_PROJECT_ID"] )
-set :channel_message_limit, 10
+set :channel_message_limit, 100
 
 set :streams, []
 
