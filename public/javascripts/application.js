@@ -1,54 +1,11 @@
 var channel = window.location.pathname.substr(1);
-var user_id = $('meta[name=user_id]').attr("content");
-var new_messages = 0
-
 var event_source = new EventSource("/stream/" + channel);
-
-// Calculate latency of messages
-function latency(time) {
-  var current_time = new Date().getTime().toFixed(3);
-  return (current_time - time).toFixed(3);
-}
-
-// Play sound files
-function playSound(sound_name) {
-  var sound = new Audio("/audio/" + sound_name + ".wav"); // buffers automatically when created
-  sound.play()
-}
-
-// update title
-function set_title(content) {
-  $('title').text(content);
-}
-
-function flashTitle(title) {
-  if ($('title').text() == 'Chattyloo') {
-    set_title(title)
-  } else {
-    set_title('Chattyloo')
-  }
-}
+var session_id = $('meta[name=session_id]').attr("content");
 
 // Handle messages
 function handleMessage(message) {
-
-  chat_message = $("<li>");
-  chat_message.text(message.content);
-  chat_message.css("border-left-color", message.color);
-
-  $('#events').append(chat_message);
-
-  // if message.session_id ==
-  if (user_id == message.user_id) {
-    playSound('send');
-  } else {
-    playSound('recieve');
-    new_messages++
-    flasher_title_int = self.setInterval("flashTitle('New Message')", 1000);
-  }
-
-  chat_message.highlight("<3", { className: 'heart' });
-  chat_message.highlight(":)", { className: 'smiley' });
+  var message = $("<li>").text(message.body);
+  $('#events').append(message);
 }
 
 // Recieve messages from eventsource, send to handler
@@ -57,52 +14,41 @@ event_source.onmessage = function(event) {
   handleMessage(message);
 };
 
+// Call on close
 event_source.onclose = function(event) {
   console.log("closing connection");
 };
 
+// Reset form and focus
 function resetForm() {
   $('form textarea').focus().val('');
-  $('form textarea').height('45px');
 }
 
 $(document).ready(function() {
-  resetForm();
-  $('#message').autosize();
 
-  $('li').highlight("<3", { className: 'heart' });
-  $('li').highlight(":)", { className: 'smiley' });
-
-  // return title of page back to normal
-  $(window).bind('keydown click', function() {
-    if (new_messages > 0) {
-      set_title('Chattyloo');
-      window.flasher_title_int = window.clearInterval(flasher_title_int);
-    }
-    new_messages = 0;
-  });
-
-  $('form textarea').bind('keypress', function(e) {
-    var code = (e.keyCode ? e.keyCode : e.which);
+  // Bind enter key to submit form
+  $('form').bind('keypress', function(event) {
+    var code = (event.keyCode ? event.keyCode : event.which);
     if (code == 13) {
       $("form").submit();
-
-      resetForm();
-      $('#message').autosize();
-      e.preventDefault();
     }
   });
 
-  $("form").live("submit", function(e) {
-    $.post('/', {
-      content: $('#message').val(),
-      channel: channel,
-      color: $('#message').data('color'),
-      user_id: $('#message').data('user-id')
-    });
+  // Send post request on submit
+  $("form").bind('submit', function(event) {
 
-    resetForm();
-    $('#message').autosize();
-    e.preventDefault();
+    // FIXME: Find a better way to see if the form has a value, this is broken
+    value = $('form textarea').val().replace(/\s+/g, ' ').length
+
+    if (value > 1) {
+      $.post('/', {
+        channel: channel,
+        session_id: session_id,
+        body: $('form textarea').val(),
+        success: function(event) { resetForm() }
+      });
+    }
+
+    event.preventDefault();
   });
 });

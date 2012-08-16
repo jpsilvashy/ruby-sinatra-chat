@@ -3,8 +3,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Chattyloo</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width"></head>
-  <meta name="user_id" content="<%= session[:session_id] %>">
+  <meta name="viewport" content="width=device-width">
+  <meta name="session_id" content="<%= session[:session_id] %>">
 
   <link rel="stylesheet" href="/stylesheets/reset.css">
   <link rel="stylesheet" href="/stylesheets/application.css">
@@ -24,7 +24,7 @@
     });
     </script>
   <% end %>
-
+</head>
 <body>
   <%= yield %>
 </body>

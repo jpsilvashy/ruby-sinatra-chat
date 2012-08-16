@@ -4,12 +4,13 @@
 require 'httparty'
 require 'pp'
 
-base_uri = 'http://0.0.0.0:4567'
+base_uri = 'http://localhost:4567'
 
 loop do
   options = {
-    channel: ARGV[0],
-    timestamp: (Time.now.to_f * 1000.0).to_f.round(3)
+    channel: 'a1',
+    session_id: "some_session_id",
+    body: "lorem ipsum"
   }
 
   # make request
