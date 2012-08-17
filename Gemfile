@@ -9,6 +9,7 @@ gem 'thin'
 gem 'json'
 gem 'ruby-ip'
 gem 'forgery'
+gem 'geocoder'
 
 gem 'iron_cache'
 

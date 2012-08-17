@@ -9,8 +9,9 @@ require 'sinatra/session'
 
 require 'iron_cache'
 require 'json'
-require 'ip'
 require 'forgery'
+require 'geocoder'
+require 'ip'
 require 'yaml'
 
 # Settings

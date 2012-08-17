@@ -12,12 +12,15 @@ post '/' do
 
   # Get the current channel from IronCache
   @channel = Channel.find_or_initialize(params[:channel])
+  @location = Geocoder.search(request.ip).first.data['city']
 
   # Form message
   message = {
     session_id: params[:session_id],
     body: params[:body],
-    timestamp: Time.now.to_i
+    timestamp: Time.now.to_i,
+    ip_address: request.ip,
+    location: @location.length > 0 ? @location : 'Unknown'
   }
 
   # Save message to IronCache
