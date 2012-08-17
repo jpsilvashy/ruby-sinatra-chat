@@ -6,8 +6,9 @@ var session_id = $('meta[name=session_id]').attr("content");
 function handleMessage(message) {
   var color = message.session_id.substring(0, 3);
   var message = $("<li>").text(message.body).css('borderLeftColor', color);
+  var location = $("<span>").text(message.location).addClass('message_location');
 
-  $('#events').append(message);
+  $('#events').append(message.append(location));
 }
 
 // Recieve messages from eventsource, send to handler
