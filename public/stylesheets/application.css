@@ -30,7 +30,13 @@ ol#events li {
 span.message_location {
   position: absolute;
   right:11px;
+  top:0;
   opacity: 0.5;
+  display: none;
+}
+
+ol#events li:hover span.message_location {
+  display: block;
 }
 
 /* substitutions */

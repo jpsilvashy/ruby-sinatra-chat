@@ -5,11 +5,10 @@ var session_id = $('meta[name=session_id]').attr("content");
 // Handle messages
 function handleMessage(message) {
 
-
   var color = message.session_id.substring(0, 3);
-  var location = $("<span />").text(message.location).addClass('message_location');
-  var message = $("<li />").text(message.body).css('borderLeftColor', color);
+  var location = $("<span>").text(message.location).addClass('message_location');
 
+  var message = $("<li>").text(message.body).css('borderLeftColor', color);
   var message = message.append(location);
 
   $('#events').append(message);
