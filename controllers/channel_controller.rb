@@ -14,10 +14,13 @@ post '/' do
   @channel = Channel.find_or_initialize(params[:channel])
   @location = Geocoder.search(request.ip).first.data['city']
 
+  body = Sanitize.clean(params[:body], Sanitize::Config::RESTRICTED)
+  body = body[0..512]
+
   # Form message
   message = {
     session_id: params[:session_id],
-    body: params[:body],
+    body: body,
     timestamp: Time.now.to_i,
     ip_address: request.ip,
     location: @location.length > 0 ? @location : 'Unknown'

@@ -2,7 +2,7 @@
   <ol id='events'>
     <% @messages.each do |message| %>
       <li style="border-left-color: #<%= message['session_id'][0..2] if message['session_id'] %>">
-        <%= message['body'] %>
+        <%= Sanitize.clean(message['body'], Sanitize::Config::RESTRICTED)[0..512] %>
         <span class='message_location' data-ip="<%= message['ip_address'] %>"><%= message['location'] %></span>
       </li>
     <% end %>

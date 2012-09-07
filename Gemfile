@@ -10,6 +10,7 @@ gem 'json'
 gem 'ruby-ip'
 gem 'forgery'
 gem 'geocoder'
+gem 'sanitize'
 
 gem 'iron_cache'
 

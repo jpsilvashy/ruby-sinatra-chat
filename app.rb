@@ -13,6 +13,7 @@ require 'forgery'
 require 'geocoder'
 require 'ip'
 require 'yaml'
+require 'sanitize'
 
 # Settings
 set :server, 'thin'
