@@ -18,6 +18,7 @@ body, textarea {
 
 ol#events {
   list-style-type: none;
+  overflow: hidden;
 }
 
 ol#events li {
