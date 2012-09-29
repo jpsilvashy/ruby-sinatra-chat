@@ -32,8 +32,7 @@ require_relative 'models/user'
 
 # Finalize DataMapper after initializing models
 DataMapper.finalize
-DataMapper.auto_upgrade! # change to auto_upgrade before deploy
-DataMapper::Model.raise_on_save_failure = true
+DataMapper.auto_upgrade!
 
 # Controllers
 require_relative 'controllers/base_controller'
