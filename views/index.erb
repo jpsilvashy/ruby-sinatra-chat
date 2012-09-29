@@ -25,7 +25,9 @@
   var currentUrl = (window.location.host + "-" + window.location.pathname).replace("/","-")
   var chattyloo = document.createElement("iframe")
 
-  chattyloo.setAttribute("src", "http://chattyloo.com/chattyloo.com--?embed=true");
+  console.log(currentUrl);
+
+  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
   chattyloo.setAttribute("height", "100%");
   chattyloo.setAttribute("width", "100%");
 

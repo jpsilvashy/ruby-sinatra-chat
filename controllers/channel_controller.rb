@@ -3,7 +3,6 @@ get '/:channel' do
 
   # Form channel name
   channel_name = "#{request.host}-#{params[:channel]}"
-  puts "get uri: #{channel_name}"
 
   # Get the current channel
   @channel = Channel.first_or_create({ name: channel_name })
