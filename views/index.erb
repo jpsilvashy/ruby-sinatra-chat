@@ -22,7 +22,7 @@
 
 <!-- Place the javascript just above the </body> tag -->
 <script type="text/javascript">
-  var currentUrl = (window.location.pathname).replace("/","-")
+  var currentUrl = window.location.pathname.replace("/","-")
   var chattyloo = document.createElement("iframe")
 
   console.log(currentUrl);

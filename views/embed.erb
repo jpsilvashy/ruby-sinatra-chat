@@ -9,7 +9,7 @@
 
 <pre class="prettyprint lang-html">
 &lt;script type=&quot;text/javascript&quot;&gt;
-  var currentUrl = (window.location.host + &quot;-&quot; + window.location.pathname).replace(&quot;/&quot;,&quot;-&quot;)
+  var currentUrl = window.location.pathname.replace(&quot;/&quot;,&quot;-&quot;)
   var chattyloo = document.createElement(&quot;iframe&quot;);
 
   chattyloo.setAttribute(&quot;src&quot;, &quot;http://chattyloo.com/&quot; + currentUrl + &quot;?embed=true&quot;);
