@@ -22,10 +22,8 @@
 
 <!-- Place the javascript just above the </body> tag -->
 <script type="text/javascript">
-  var currentUrl = window.location.pathname.replace("/","-")
-  var chattyloo = document.createElement("iframe")
-
-  console.log(currentUrl);
+  var currentUrl = window.location.pathname.replace("/","-");
+  var chattyloo = document.createElement("iframe");
 
   chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
   chattyloo.setAttribute("height", "100%");
