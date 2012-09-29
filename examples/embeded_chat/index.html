@@ -1,19 +1,29 @@
 <html>
 <head>
-<style type="text/css">
+  <style type="text/css">
 
   /* Make this element the exact size you want your chat window */
   #chattyloo {
     width: 300px;
   }
 
-</style>
+  </style>
 </head>
 <body>
 
   <!-- Place this element where you want the chat window -->
-  <div id="chattyloo">
-    <iframe src="http://chattyloo.com/example.com?embed=true" height='100%' width='100%' frameBorder='0'></iframe>
-  </div>
+  <div id="chattyloo"></div>
+
+  <!-- Place the javascript just above the </body> tag -->
+  <script type="text/javascript">
+    var currentUrl = window.location.pathname.replace("/","-");
+    var chattyloo = document.createElement("iframe");
+
+    chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
+    chattyloo.setAttribute("height", "100%");
+    chattyloo.setAttribute("width", "100%");
+
+    document.getElementById('chattyloo').appendChild(chattyloo);
+  </script>
 </body>
 </html>

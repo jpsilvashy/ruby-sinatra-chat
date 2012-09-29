@@ -29,7 +29,7 @@ bundle
 Then you should be able to start the server:
 
 ``` sh
-./chattyloo.rb
+./app.rb
 ```
 
 Then just go to [localhost:4567](http://localhost:4567), and start chatting!
