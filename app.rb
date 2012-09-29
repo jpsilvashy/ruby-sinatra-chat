@@ -7,27 +7,33 @@ Bundler.require
 require 'sinatra'
 require 'sinatra/session'
 
-require 'iron_cache'
 require 'json'
 require 'forgery'
 require 'geocoder'
 require 'ip'
 require 'yaml'
 require 'sanitize'
+require 'data_mapper'
 
 # Settings
 set :server, 'thin'
 set :session_secret, 'super-secret'
 set :protection, :except => :frame_options
 
-set :ironcache, IronCache::Client.new( token: ENV["IRON_CACHE_TOKEN"], project_id: ENV["IRON_CACHE_PROJECT_ID"] )
-set :channel_message_limit, 100
-
 set :streams, []
+
+# Setup DataMapper
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3::memory:")
 
 # Models
 require_relative 'models/channel'
+require_relative 'models/message'
 require_relative 'models/user'
+
+# Finalize DataMapper after initializing models
+DataMapper.finalize
+DataMapper.auto_upgrade! # change to auto_upgrade before deploy
+DataMapper::Model.raise_on_save_failure = true
 
 # Controllers
 require_relative 'controllers/base_controller'

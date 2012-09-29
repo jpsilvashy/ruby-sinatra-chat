@@ -1,4 +1,4 @@
-var channel = window.location.pathname.substr(1);
+var channel = window.location.hostname + "-" + window.location.pathname.substr(1);
 var event_source = new EventSource("/stream/" + channel);
 var session_id = $('meta[name=session_id]').attr("content");
 
@@ -8,7 +8,7 @@ function handleMessage(message) {
   var color = message.session_id.substring(0, 3);
   var location = $("<span>").text(message.location).addClass('message_location');
 
-  var message = $("<li>").text(message.body).css('borderLeftColor', color);
+  var message = $("<li>").text(message.content).css('borderLeftColor', color);
   var message = message.append(location);
 
   $('#events').append(message);
@@ -57,7 +57,7 @@ $(document).ready(function() {
       $.post('/', {
         channel: channel,
         session_id: session_id,
-        body: $('form textarea').val(),
+        content: $('form textarea').val(),
       }, function() {
         resetForm();
       });
