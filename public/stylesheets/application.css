@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+
+:focus {
+  outline: 0;
+}
+
+body, textarea {
+  font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #777;
+}
+
+#chat_window {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
+}
+
+ol#events {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+ol#events li {
+  margin:5px 20px 0 20px;
+  padding:0 100px 0 11px;
+  border-left: 5px solid #ccc;
+  position: relative;
+}
+
+span.message_location {
+  position: absolute;
+  right:11px;
+  top:0;
+  opacity: 0.5;
+  display: none;
+}
+
+ol#events li:hover span.message_location {
+  display: block;
+}
+
+/* substitutions */
+.heart {
+  display: inline-block;
+  letter-spacing: -2px;
+  font-weight: bold;
+
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.smiley {
+  display: inline-block;
+  margin: 0 8px;
+  font-weight: bold;
+
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+form {
+  margin:20px;
+  position: relative;
+}
+
+form textarea {
+  border:1px solid #ccc;
+  border-top: 1px solid #aaa;
+  padding: 10px 70px 10px 15px;
+  border-radius: 3px;
+  width:100%;
+  height:45px;
+  margin:0;
+  resize:none;
+}
+
+form button {
+  position: absolute;
+  top:8;
+  right:8px;
+  border-radius: 3px;
+  border:1px solid #ccc;
+}

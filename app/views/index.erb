@@ -1,0 +1,45 @@
+<header>
+  <h1>Chattyloo</h1>
+  <h2>Embed a chatroom anywhere, for free!</h2>
+  <p>
+    No signup needed, and it takes less than 5 minutes to<br>
+    embed into your site! <a href="/embed">Get Started &rarr;</a>
+  </p>
+
+  <!-- Place this element where you want the chat window -->
+  <div id="chattyloo"></div>
+</header>
+
+<section>
+  <h2>What is Chattyloo Anyway?</h2>
+  <p>Chattyloo is a simple <a href='http://en.wikipedia.org/wiki/Asynchronous_I/O'>asynchronous</a> chat application written in <a href='http://www.ruby-lang.org/'>Ruby</a>. It's simple to embed and it&rsquo;s simple to use, in fact, users don&rsquo;t have to signin, they don&rsquo;t have nicknames or avatars. If you need those features Chattyloo isn&rsquo;t for you!</p>
+  <p>Right now, users are identified by a random color that is generated when they enter the chat, we're working on a better solution, but it&rsquo;s inteded to stay simple and fun.</p>
+  <p>Who cares, there are like a million other chat apps! That&rsquo;s true! Chattyloo is different, it doesn't use XMPP, Juggernaut, or Comet. Chattyloo takes advantage of Sever-Sent Events. It&rsquo;s far simpler than plain old WebSockets and much more secure because it&rsquo;s HTTP.</p>
+
+  <h2>Free and Open Source</h2>
+  <p>There are a lot of solutions for chat out there, many cost money! Chattyloo is free and It&rsquo;s completely open-source, meaning <a href='http://github.com/jpsilvashy/chattyloo'>you can help make it better</a>! Learn more about <a href='http://jpsilvashy.com/posts/chattyloo'>how Chattyloo was built</a>.</p>
+</section>
+
+<!-- Place the javascript just above the </body> tag -->
+<script type="text/javascript">
+  var currentUrl = window.location.pathname.replace("/","-");
+  var chattyloo = document.createElement("iframe");
+
+  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
+  chattyloo.setAttribute("height", "100%");
+  chattyloo.setAttribute("width", "100%");
+
+  document.getElementById('chattyloo').appendChild(chattyloo);
+</script>
+
+<footer>
+  <p>Created by <a href="http://jpsilvashy.com">Joseph Silvashy</a></p>
+</footer>
+
+<script>
+  // Google Analytics
+  var _gaq=[['_setAccount','UA-33729498-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
