@@ -22,10 +22,10 @@
 
 <!-- Place the javascript just above the </body> tag -->
 <script type="text/javascript">
-  var currentUrl = window.location.pathname.replace("/","-");
+  var currentUrl = window.btoa( unescape(encodeURIComponent( window.location.pathname )));
   var chattyloo = document.createElement("iframe");
 
-  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl + "?embed=true");
+  chattyloo.setAttribute("src", "http://chattyloo.com/" + currentUrl.substring(0, 8) + "?embed=true");
   chattyloo.setAttribute("height", "100%");
   chattyloo.setAttribute("width", "100%");
 
@@ -35,11 +35,3 @@
 <footer>
   <p>Created by <a href="http://jpsilvashy.com">Joseph Silvashy</a></p>
 </footer>
-
-<script>
-  // Google Analytics
-  var _gaq=[['_setAccount','UA-33729498-1'],['_trackPageview']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
